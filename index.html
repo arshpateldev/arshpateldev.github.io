@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Arsh Patel | Premium Full-Stack Web Development & Design</title>
+    <meta name="description" content="Arsh Patel offers high-end, responsive web development services starting from $10. Specialized in UI/UX, 3D web experiences, and custom backend solutions.">
+    <meta name="keywords" content="Arsh Patel, Web Developer, Full Stack, UI/UX Design, 3D Website, Portfolio, Affordable Web Design">
+    <meta name="author" content="Arsh Patel">
+    <meta property="og:title" content="Arsh Patel | Premium Web Development">
+    <meta property="og:description" content="Digital excellence built with precision. Professional web solutions for every budget.">
+    <meta property="og:type" content="website">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #fafafa; 
+            color: #111; 
+            margin: 0; 
+            overflow-x: hidden; 
+        }
+
+        ::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #ffffff;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .scroller {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .scroller-inner {
+            display: flex;
+            gap: 1.5rem;
+            padding-block: 1rem;
+            width: max-content;
+            animation: scroll 60s linear infinite;
+        }
+
+        .scroller-inner:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            to { transform: translate(calc(-50% - 0.75rem)); }
+        }
+
+        .loader { position: relative; width: 75px; height: 100px; }
+        .loader__bar {
+            position: absolute; bottom: 0; width: 10px; height: 50%;
+            background: rgb(0, 0, 0); transform-origin: center bottom;
+            box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .loader__bar:nth-child(1) { left: 0px; transform: scale(1, 0.2); animation: barUp1 4s infinite; }
+        .loader__bar:nth-child(2) { left: 15px; transform: scale(1, 0.4); animation: barUp2 4s infinite; }
+        .loader__bar:nth-child(3) { left: 30px; transform: scale(1, 0.6); animation: barUp3 4s infinite; }
+        .loader__bar:nth-child(4) { left: 45px; transform: scale(1, 0.8); animation: barUp4 4s infinite; }
+        .loader__bar:nth-child(5) { left: 60px; transform: scale(1, 1); animation: barUp5 4s infinite; }
+
+        .loader__ball {
+            position: absolute; bottom: 10px; left: 0; width: 10px; height: 10px;
+            background: rgb(0, 122, 255); border-radius: 50%;
+            animation: ball624 4s infinite;
+        }
+
+        @keyframes ball624 {
+            0% { transform: translate(0, 0); }
+            5% { transform: translate(8px, -14px); }
+            10% { transform: translate(15px, -10px); }
+            17% { transform: translate(23px, -24px); }
+            20% { transform: translate(30px, -20px); }
+            27% { transform: translate(38px, -34px); }
+            30% { transform: translate(45px, -30px); }
+            37% { transform: translate(53px, -44px); }
+            40% { transform: translate(60px, -40px); }
+            50% { transform: translate(60px, 0); }
+            57% { transform: translate(53px, -14px); }
+            60% { transform: translate(45px, -10px); }
+            67% { transform: translate(37px, -24px); }
+            70% { transform: translate(30px, -20px); }
+            77% { transform: translate(22px, -34px); }
+            80% { transform: translate(15px, -30px); }
+            87% { transform: translate(7px, -44px); }
+            90% { transform: translate(0, -40px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        @keyframes barUp1 { 0%, 40%, 100% { transform: scale(1, 0.2); } 50%, 90% { transform: scale(1, 1); } }
+        @keyframes barUp2 { 0%, 40%, 100% { transform: scale(1, 0.4); } 50%, 90% { transform: scale(1, 0.8); } }
+        @keyframes barUp3 { 0%, 100% { transform: scale(1, 0.6); } }
+        @keyframes barUp4 { 0%, 40%, 100% { transform: scale(1, 0.8); } 50%, 90% { transform: scale(1, 0.4); } }
+        @keyframes barUp5 { 0%, 40%, 100% { transform: scale(1, 1); } 50%, 90% { transform: scale(1, 0.2); } }
+
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .review-card { 
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 320px;
+            flex-shrink: 0;
+        }
+        .text-gradient { background: linear-gradient(to right, #111, #444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-primary { background-color: #007AFF; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-primary:hover { background-color: #0056b3; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2); }
+        .pricing-card { transition: all 0.4s ease; background: rgba(255, 255, 255, 0.9); }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        
+        .planner-step { display: none; }
+        .planner-step.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .hidden-content { opacity: 0; visibility: hidden; transition: opacity 1s ease; }
+        .visible-content { opacity: 1; visibility: visible; }
+
+        .success-animation { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; animation: fadeIn 0.5s ease forwards; }
+        .checkmark-svg { width: 80px; height: 80px; }
+        .checkmark-circle { stroke-dasharray: 166; stroke-dashoffset: 166; stroke-width: 2; stroke-miterlimit: 10; stroke: #7ac142; fill: none; animation: strokeCircle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards; }
+        .checkmark-check { transform-origin: 50% 50%; stroke-dasharray: 48; stroke-dashoffset: 48; stroke: #7ac142; stroke-width: 3; animation: strokeCheck 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards; }
+        @keyframes strokeCircle { 100% { stroke-dashoffset: 0; } }
+        @keyframes strokeCheck { 100% { stroke-dashoffset: 0; } }
+
+        .alert-box {
+            position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+            background: #ff4d4d; color: white; padding: 8px 20px; border-radius: 10px;
+            font-size: 0.8rem; font-weight: bold; opacity: 0; transition: all 0.3s; pointer-events: none;
+            z-index: 1000;
+        }
+        .alert-active { top: 10px; opacity: 1; }
+
+        .mandatory-star { color: #ff4d4d; font-weight: bold; margin-left: 2px; }
+
+        /* Custom Checkbox UI */
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox input { display: none; }
+        .checkmark {
+            height: 24px; width: 24px; border: 2px solid #e5e7eb;
+            border-radius: 8px; margin-right: 12px; display: flex;
+            align-items: center; justify-content: center; transition: all 0.2s;
+        }
+        .custom-checkbox input:checked + .checkmark {
+            background-color: #007AFF;
+            border-color: #007AFF;
+        }
+        .checkmark:after {
+            content: ""; display: none; width: 6px; height: 11px;
+            border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg);
+            margin-bottom: 2px;
+        }
+        .custom-checkbox input:checked + .checkmark:after { display: block; }
+
+        /* Floating Chatbot UI */
+        #chatbot-trigger {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 60px; height: 60px; background: #000000;
+            border-radius: 20px; display: flex; align-items: center; justify-content: center;
+            color: white; cursor: pointer; z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: none; 
+        }
+
+        #chatbot-window {
+            position: fixed; bottom: 100px; right: 30px;
+            width: 350px; height: 500px; background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px; z-index: 1001; display: none;
+            flex-direction: column; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            animation: chatSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes chatSlideUp { from { opacity: 0; transform: translateY(30px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        .chat-header { background: rgba(0, 0, 0, 0.03); padding: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .chat-body { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .chat-footer { padding: 15px; border-top: 1px solid rgba(0,0,0,0.05); background: white; }
+        
+        .bot-msg { align-self: flex-start; background: #f1f1f1; padding: 12px 16px; border-radius: 18px 18px 18px 4px; font-size: 14px; max-width: 80%; }
+        
+        /* Modal UI */
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(5px);
+            z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-content {
+            background: white; width: 100%; max-width: 600px; max-height: 80vh;
+            border-radius: 30px; padding: 40px; overflow-y: auto; position: relative;
+            animation: modalIn 0.3s ease-out;
+        }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__ball"></div>
+        </div>
+    </div>
+
+    <!-- Modals for Terms/Privacy -->
+    <div id="legalModal" class="modal" onclick="closeLegal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button onclick="closeLegal()" class="absolute top-6 right-6 text-gray-400 hover:text-black">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+            <h2 id="modalTitle" class="text-2xl font-bold mb-6 tracking-tighter uppercase">Legal Document</h2>
+            <div id="modalBody" class="text-gray-600 space-y-4 text-sm leading-relaxed text-left">
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot Trigger -->
+    <div id="chatbot-trigger" onclick="toggleChat()">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <!-- Chatbot Window - ORB AI -->
+    <div id="chatbot-window">
+        <div class="chat-header flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white mr-3">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold">ORB AI</h4>
+                    <span class="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Active Assistant</span>
+                </div>
+            </div>
+            <button onclick="toggleChat()" class="text-gray-400 hover:text-black">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+        <div class="chat-body">
+            <div class="bot-msg">Welcome. I am **ORB AI**, Arsh's technical guide. How may I assist you today?</div>
+            <div class="bot-msg">I am currently analyzing your session. Please feel free to explore the pricing and wall of love sections.</div>
+        </div>
+        <div class="chat-footer">
+            <div class="relative">
+                <input type="text" placeholder="AI calibrated for queries soon..." disabled class="w-full bg-gray-100 border-none px-4 py-3 rounded-xl text-sm italic text-gray-400 cursor-not-allowed">
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden-content">
+        <!-- Navigation -->
+        <header>
+            <nav class="fixed top-0 w-full z-50 glass">
+                <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                    <div class="text-xl font-bold tracking-tighter uppercase">
+                        ARSHPATEL<span class="text-blue-600">.</span>
+                    </div>
+                    <div class="hidden md:flex space-x-10 text-sm font-medium text-gray-600">
+                        <a href="#home" class="hover:text-black transition-colors">Home</a>
+                        <a href="#pricing" class="hover:text-black transition-colors">Services</a>
+                        <a href="#testimonials" class="hover:text-black transition-colors">Wall of Love</a>
+                        <a href="#contact" class="hover:text-black transition-colors">Contact</a>
+                    </div>
+                    <a href="#contact" class="bg-black text-white px-8 py-2.5 rounded-full text-sm font-bold hover:bg-gray-800 transition-all">
+                        Apply
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Hero -->
+            <section id="home" class="min-h-screen flex flex-col items-center justify-center pt-20 px-6 relative z-10">
+                <div class="max-w-5xl mx-auto text-center" data-aos="fade-up">
+                    <span class="inline-block py-1 px-3 mb-6 text-xs font-bold tracking-widest uppercase bg-blue-50 text-blue-600 rounded-full">
+                        Premium Digital Studio
+                    </span>
+                    <h1 class="text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
+                        High-end code for <span class="text-gradient">high-end results.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+                        Digital excellence built with precision. We engineer professional web solutions that define industries.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#contact" class="bg-black text-white px-10 py-4 rounded-full font-bold shadow-lg">Start Project</a>
+                        <a href="#pricing" class="bg-white border border-gray-200 px-10 py-4 rounded-full font-bold">View Packages</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing -->
+            <section id="pricing" class="py-24 px-6 relative z-10 bg-white">
+                <div class="max-w-7xl mx-auto">
+                    <div class="text-center mb-16" data-aos="fade-up">
+                        <h2 class="text-4xl font-bold mb-4">Investment Plans</h2>
+                        <p class="text-gray-500">Professional architecture for every business scale.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                        <!-- Essential -->
+                        <article class="pricing-card p-10 rounded-3xl border border-gray-100" data-aos="fade-right">
+                            <h3 class="text-lg font-medium text-gray-500 mb-2">Essential</h3>
+                            <div class="text-4xl font-bold mb-6">$10<span class="text-sm font-normal text-gray-400">/starting</span></div>
+                            <ul class="space-y-4 mb-10 text-gray-600 text-sm">
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Single Landing Page</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Responsive Mobile Design</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Basic SEO Setup</li>
+                            </ul>
+                            <a href="#contact" class="block text-center py-3 border border-gray-200 rounded-xl font-medium hover:bg-black hover:text-white transition-all">Choose Essential</a>
+                        </article>
+
+                        <!-- Professional -->
+                        <article class="pricing-card p-10 rounded-3xl border-2 border-black relative z-10 shadow-2xl" data-aos="fade-up">
+                            <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-black text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Most Popular</div>
+                            <h3 class="text-lg font-medium text-gray-500 mb-2">Professional</h3>
+                            <div class="text-4xl font-bold mb-6">$50<span class="text-sm font-normal text-gray-400">/avg</span></div>
+                            <ul class="space-y-4 mb-10 text-gray-600 text-sm">
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Bespoke UX/UI Design</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Multi-page Architecture</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Custom Interactions</li>
+                            </ul>
+                            <a href="#contact" class="block text-center py-4 bg-black text-white rounded-xl font-bold hover:opacity-90 transition-all">Select Professional</a>
+                        </article>
+
+                        <!-- Ultimate -->
+                        <article class="pricing-card p-10 rounded-3xl border border-gray-100" data-aos="fade-left">
+                            <h3 class="text-lg font-medium text-blue-600 mb-2">Ultimate</h3>
+                            <div class="text-4xl font-bold mb-6">$100<span class="text-sm font-normal text-gray-400">/premium</span></div>
+                            <ul class="space-y-4 mb-10 text-gray-600 text-sm">
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Full-stack Dashboard</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Three.js 3D Visuals</li>
+                                <li class="flex items-center"><svg class="w-4 h-4 mr-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Admin Content Control</li>
+                            </ul>
+                            <a href="#contact" class="block text-center py-3 border border-blue-600 text-blue-600 rounded-xl font-medium hover:bg-blue-600 hover:text-white transition-all">Go Ultimate</a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials (Wall of Love) -->
+            <section id="testimonials" class="py-24 px-6 bg-[#fafafa] overflow-hidden">
+                <div class="max-w-7xl mx-auto text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-4">The Wall of Love</h2>
+                    <p class="text-gray-500">Global trust earned through pixel-perfect execution.</p>
+                </div>
+                <div class="scroller" data-speed="fast">
+                    <div id="testimonialGrid" class="scroller-inner"></div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="py-24 px-6 relative z-10">
+                <div class="max-w-4xl mx-auto relative">
+                    <div id="validationAlert" class="alert-box">Missing required fields. Please check all questions marked with a star.</div>
+                    
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold mb-4">Project Architecture</h2>
+                        <p class="text-gray-500">Generate your technical blueprint to begin alignment.</p>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
+                        <div id="applicationHeader" class="bg-gray-50 px-8 py-4 border-b border-gray-100 flex items-center justify-between">
+                            <span id="progressText" class="text-xs font-bold uppercase tracking-widest text-blue-600">Phase 1 of 5</span>
+                            <div class="w-32 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                <div id="progressBar" class="w-1/5 h-full bg-blue-600 transition-all duration-300"></div>
+                            </div>
+                        </div>
+
+                        <div class="p-8 md:p-12">
+                            <div id="projectPlanner">
+                                <!-- Step 1 -->
+                                <div class="planner-step active" id="step1">
+                                    <h3 class="text-2xl font-bold mb-8">1. Project Roots<span class="mandatory-star">*</span></h3>
+                                    <div class="space-y-6">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <button onclick="updateStatus('New Build')" id="btnNew" class="p-5 border-2 border-gray-100 rounded-xl hover:border-blue-500 transition-all text-left">New Infrastructure</button>
+                                            <button onclick="updateStatus('Redesign')" id="btnRedesign" class="p-5 border-2 border-gray-100 rounded-xl hover:border-blue-500 transition-all text-left">Modernization</button>
+                                        </div>
+                                        <select id="qDomain" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:bg-white focus:border-blue-500 transition-all">
+                                            <option value="" disabled selected>Asset ownership: Domain name?<span class="mandatory-star">*</span></option>
+                                            <option value="Yes">Domain is secured</option>
+                                            <option value="No">Requirement: Domain acquisition</option>
+                                        </select>
+                                        <button onclick="nextStep(2)" class="w-full btn-primary text-white py-4 rounded-2xl font-bold">Initialize Phase 2</button>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2 -->
+                                <div class="planner-step" id="step2">
+                                    <h3 class="text-2xl font-bold mb-8">2. Vision & Reach<span class="mandatory-star">*</span></h3>
+                                    <div class="space-y-6">
+                                        <input type="text" id="qAudience" placeholder="Target Demographics*" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:border-blue-500">
+                                        <input type="text" id="qTone" placeholder="Brand Voice (e.g., Minimalist, Bold)*" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:border-blue-500">
+                                        <div class="flex gap-4">
+                                            <button onclick="prevStep(1)" class="w-1/3 py-4 border border-gray-200 rounded-2xl font-medium">Revert</button>
+                                            <button onclick="nextStep(3)" class="w-2/3 btn-primary text-white py-4 rounded-2xl font-bold">Initialize Phase 3</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 -->
+                                <div class="planner-step" id="step3">
+                                    <h3 class="text-2xl font-bold mb-8">3. Functional Scope<span class="mandatory-star">*</span></h3>
+                                    <div class="space-y-6">
+                                        <input type="number" id="qPages" placeholder="Expected Node Count (Pages)*" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:border-blue-500">
+                                        <input type="text" id="qFeatures" placeholder="Critical Integrations (e.g., CMS, Payments)*" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:border-blue-500">
+                                        <div class="flex gap-4">
+                                            <button onclick="prevStep(2)" class="w-1/3 py-4 border border-gray-200 rounded-2xl font-medium">Revert</button>
+                                            <button onclick="nextStep(4)" class="w-2/3 btn-primary text-white py-4 rounded-2xl font-bold">Initialize Phase 4</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4 -->
+                                <div class="planner-step" id="step4">
+                                    <h3 class="text-2xl font-bold mb-8">4. Financial Allocation<span class="mandatory-star">*</span></h3>
+                                    <div class="space-y-6">
+                                        <input type="text" id="qBudget" placeholder="Proposed Budget Allocation (USD)*" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:border-blue-500">
+                                        <div class="flex gap-4">
+                                            <button onclick="prevStep(3)" class="w-1/3 py-4 border border-gray-200 rounded-2xl font-medium">Revert</button>
+                                            <button onclick="generateBrief()" class="w-2/3 btn-primary text-white py-4 rounded-2xl font-bold">Compile Specification</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 5 -->
+                                <div class="planner-step" id="step5">
+                                    <h3 class="text-2xl font-bold mb-4">5. Project Verification<span class="mandatory-star">*</span></h3>
+                                    <div class="space-y-6">
+                                        <textarea id="finalBrief" rows="4" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none resize-none text-xs font-mono" readonly></textarea>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <input type="text" id="userName" placeholder="Full Professional Name*" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:border-blue-500">
+                                            <input type="email" id="userEmail" placeholder="Official Email Contact*" class="w-full px-5 py-4 bg-gray-50 border border-transparent rounded-2xl outline-none focus:border-blue-500">
+                                        </div>
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" id="termsCheck">
+                                            <span class="checkmark"></span>
+                                            <span class="text-sm text-gray-500">Affirm compliance with <button onclick="openLegal('terms')" class="text-black font-semibold underline">Service Terms</button> and <button onclick="openLegal('privacy')" class="text-black font-semibold underline">Privacy Standards</button>.<span class="mandatory-star">*</span></span>
+                                        </label>
+                                        <div class="flex gap-4">
+                                            <button onclick="prevStep(4)" class="w-1/3 py-4 border border-gray-200 rounded-2xl font-medium">Revert</button>
+                                            <button onclick="handleApply()" class="w-2/3 btn-primary text-white py-4 rounded-2xl font-bold">Transmit Application</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Success Screen with Detailed Guide -->
+                            <div id="successScreen" class="hidden success-animation">
+                                <svg class="checkmark-svg" viewBox="0 0 52 52">
+                                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                                </svg>
+                                <h3 class="text-3xl font-bold mt-8 mb-4">Application Verified</h3>
+                                
+                                <div class="bg-gray-50 p-8 rounded-3xl text-left border border-gray-100 max-w-lg mb-8">
+                                    <h4 class="text-xs font-bold uppercase tracking-widest text-blue-600 mb-4">Transmission Protocol Guide</h4>
+                                    <ol class="text-sm space-y-4 text-gray-600">
+                                        <li class="flex gap-3"><span class="bg-black text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 mt-0.5">1</span> <strong>Copy Specification:</strong> Ensure the generated technical brief is copied to your clipboard.</li>
+                                        <li class="flex gap-3"><span class="bg-black text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 mt-0.5">2</span> <strong>Open Communication:</strong> Create a new email addressed to <strong>arshpatelemailsend@gmail.com</strong>.</li>
+                                        <li class="flex gap-3"><span class="bg-black text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 mt-0.5">3</span> <strong>Finalize Payload:</strong> Paste the brief into the email body and attach any relevant brand assets.</li>
+                                        <li class="flex gap-3"><span class="bg-black text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] shrink-0 mt-0.5">4</span> <strong>Await Calibration:</strong> Arsh Patel will analyze your submission within 12-24 business hours.</li>
+                                    </ol>
+                                </div>
+
+                                <button onclick="resetForm()" class="px-10 py-4 bg-black text-white rounded-full font-bold shadow-xl hover:scale-105 transition-transform">Reset Pipeline</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="py-12 border-t border-gray-100 text-center">
+            <p class="text-sm text-gray-400 font-medium">&copy; 2025 Arsh Patel Digital Studio. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const mainContent = document.getElementById('main-content');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                mainContent.classList.add('visible-content');
+            }, 1200);
+        });
+
+        // Chatbot Logic
+        function toggleChat() {
+            const chat = document.getElementById('chatbot-window');
+            chat.style.display = chat.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Expanded Legal Documentation
+        function openLegal(type) {
+            const modal = document.getElementById('legalModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+            modal.style.display = 'flex';
+            if(type === 'terms') {
+                title.innerText = 'Terms of Professional Service';
+                body.innerHTML = `
+                    <div class="space-y-4">
+                        <section>
+                            <h4 class="font-bold text-black uppercase text-[11px] mb-1">1. Engagement Protocol</h4>
+                            <p>Submission of the project brief does not constitute a binding contract. Services commence only upon countersigning a formal Statement of Work (SOW).</p>
+                        </section>
+                        <section>
+                            <h4 class="font-bold text-black uppercase text-[11px] mb-1">2. Financial Structures</h4>
+                            <p>Essential plans start at $10. Professional at $50. Ultimate at $100. Custom features outside these scopes will be billed at an agreed-upon hourly rate or milestone fee.</p>
+                        </section>
+                        <section>
+                            <h4 class="font-bold text-black uppercase text-[11px] mb-1">3. Intellectual Property</h4>
+                            <p>Full ownership of final deliverables is transferred to the client upon receipt of final payment. Source code and design files remain the property of Arsh Patel until closure.</p>
+                        </section>
+                        <section>
+                            <h4 class="font-bold text-black uppercase text-[11px] mb-1">4. Revision Cycle</h4>
+                            <p>Projects include up to 2 major revision cycles. Additional revisions may incur supplemental architectural fees.</p>
+                        </section>
+                    </div>`;
+            } else {
+                title.innerText = 'Privacy & Data Standards';
+                body.innerHTML = `
+                    <div class="space-y-4">
+                        <section>
+                            <h4 class="font-bold text-black uppercase text-[11px] mb-1">1. Data Sovereignty</h4>
+                            <p>Your technical brief data is used strictly for internal feasibility analysis. We do not sell or distribute client demographics.</p>
+                        </section>
+                        <section>
+                            <h4 class="font-bold text-black uppercase text-[11px] mb-1">2. Communication Permission</h4>
+                            <p>By providing your official email, you consent to receive direct project-related correspondence from the Arsh Patel Digital Studio team.</p>
+                        </section>
+                        <section>
+                            <h4 class="font-bold text-black uppercase text-[11px] mb-1">3. Encryption & Storage</h4>
+                            <p>Personal information is processed locally on this interface to generate your specification. No data is cached on our public servers without active engagement.</p>
+                        </section>
+                    </div>`;
+            }
+        }
+        function closeLegal() { document.getElementById('legalModal').style.display = 'none'; }
+
+        // Testimonial Scroller with Stars
+        const reviews = [
+            { name: "Zephyrin Thorne", review: "Flawless technical execution. The clean code architecture is world-class.", rating: 5 },
+            { name: "Seraphina Vane", review: "Absolute digital mastery. Transformed our legacy system into a 3D masterpiece.", rating: 5 },
+            { name: "Cassian Night", review: "Efficiency redefined. Arsh delivered a complex dashboard in record time.", rating: 5 },
+            { name: "Lyra Valerius", review: "The UI aesthetics are unparalleled. A true visionary in front-end engineering.", rating: 5 },
+            { name: "Soren Eldridge", review: "Highest level of professionalism. Every detail was accounted for.", rating: 5 }
+        ];
+
+        const testimonialGrid = document.getElementById('testimonialGrid');
+        testimonialGrid.innerHTML = [...reviews, ...reviews].map(r => `
+            <div class="review-card p-8 rounded-3xl">
+                <div class="flex gap-1 mb-4 text-yellow-400">
+                    ${Array(r.rating).fill('<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>').join('')}
+                </div>
+                <p class="text-sm text-gray-600 mb-6 italic leading-relaxed">"${r.review}"</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-[10px] mr-3">${r.name.charAt(0)}</div>
+                    <div>
+                        <h4 class="text-sm font-bold tracking-tight">${r.name}</h4>
+                        <p class="text-[10px] text-gray-400 font-medium">Verified Partner</p>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // Form Logic
+        let projectData = { status: '', domain: '', audience: '', tone: '', pages: '', features: '', budget: '' };
+
+        function updateStatus(val) {
+            projectData.status = val;
+            document.querySelectorAll('#btnNew, #btnRedesign').forEach(b => b.classList.remove('border-blue-500', 'bg-blue-50', 'text-blue-600'));
+            event.currentTarget.classList.add('border-blue-500', 'bg-blue-50', 'text-blue-600');
+        }
+
+        function nextStep(step) {
+            document.querySelectorAll('.planner-step').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step${step}`).classList.add('active');
+            const progress = (step / 5) * 100;
+            document.getElementById('progressBar').style.width = `${progress}%`;
+            document.getElementById('progressText').innerText = `Phase ${step} of 5`;
+        }
+
+        function prevStep(step) { nextStep(step); }
+
+        function generateBrief() {
+            const budget = document.getElementById('qBudget').value;
+            projectData.domain = document.getElementById('qDomain').value;
+            projectData.audience = document.getElementById('qAudience').value;
+            projectData.tone = document.getElementById('qTone').value;
+            projectData.pages = document.getElementById('qPages').value;
+            projectData.features = document.getElementById('qFeatures').value;
+            projectData.budget = budget;
+
+            const brief = `[SPECIFICATION VERIFIED]\nProject: ${projectData.status}\nDomain: ${projectData.domain}\nAudience: ${projectData.audience}\nVoice: ${projectData.tone}\nNode Count: ${projectData.pages}\nIntegrations: ${projectData.features}\nAllocation: $${projectData.budget}`;
+            document.getElementById('finalBrief').value = brief;
+            nextStep(5);
+        }
+
+        function handleApply() {
+            const name = document.getElementById('userName').value;
+            const briefContent = document.getElementById('finalBrief').value;
+            const filename = `Project_Specification_${name.replace(/\s+/g, '_') || 'Client'}.txt`;
+            download(filename, briefContent);
+
+            document.getElementById('projectPlanner').classList.add('hidden');
+            document.getElementById('applicationHeader').classList.add('hidden');
+            document.getElementById('successScreen').classList.remove('hidden');
+        }
+
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        function resetForm() {
+            // Full Reset
+            projectData = { status: '', domain: '', audience: '', tone: '', pages: '', features: '', budget: '' };
+            document.getElementById('qDomain').value = "";
+            document.getElementById('qAudience').value = "";
+            document.getElementById('qTone').value = "";
+            document.getElementById('qPages').value = "";
+            document.getElementById('qFeatures').value = "";
+            document.getElementById('qBudget').value = "";
+            document.getElementById('userName').value = "";
+            document.getElementById('userEmail').value = "";
+            document.getElementById('termsCheck').checked = false;
+            
+            document.querySelectorAll('#btnNew, #btnRedesign').forEach(b => b.classList.remove('border-blue-500', 'bg-blue-50', 'text-blue-600'));
+            
+            document.getElementById('successScreen').classList.add('hidden');
+            document.getElementById('projectPlanner').classList.remove('hidden');
+            document.getElementById('applicationHeader').classList.remove('hidden');
+            nextStep(1);
+            
+            // Scroll to top of section
+            document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
